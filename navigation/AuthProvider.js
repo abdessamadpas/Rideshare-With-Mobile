@@ -3,7 +3,7 @@ import React, {createContext, useState} from 'react';
 import { auth,provider } from "../firebase-config";
 //import { getAuth } from "firebase/auth";
 
-import { getAuth, signInWithEmailAndPassword , createUserWithEmailAndPassword,signOut ,signInWithRedirect , signInWithPopup, GoogleAuthProvider } from "firebase/auth";//import {app} from '../firebase-config'
+import { signInWithEmailAndPassword , createUserWithEmailAndPassword,signOut ,signInWithRedirect  } from "firebase/auth";//import {app} from '../firebase-config'
 
 //import firestore from '@react-native-firebase/firestore';
 //const auth = getAuth();
@@ -27,7 +27,7 @@ export const AuthProvider = ({children }) => {
             console.log("login done");
           } catch (e) {
             console.log(e);
-            console.log(e); console.log("LOGIN error ");
+            console.log("LOGIN error ");
           }
         },
         googleLogin: ()=>{
