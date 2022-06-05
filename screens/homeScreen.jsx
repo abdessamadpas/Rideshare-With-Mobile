@@ -16,15 +16,15 @@ const HomeScreen = ({ navigation }) => {
 
     const [categories, setCategories] = React.useState(categoryData)
     const [selectedCategory, setSelectedCategory] = React.useState(null)
-    const [restaurants, setRestaurants] = React.useState(carpoolingData)
+    const [carpoolings, setCarpoolings] = React.useState(carpoolingData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
 
     function onSelectCategory(category) {
         //filter restaurant
-        let restaurantList = carpoolingData.filter(a => a.categories.includes(category.id))
+        let carpoolingList = carpoolingData.filter(a => a.categories.includes(category.id))
 
-        setRestaurants(restaurantList)
+        setCarpoolings(carpoolingList)
 
         setSelectedCategory(category)
     }
@@ -265,7 +265,7 @@ const HomeScreen = ({ navigation }) => {
 
         return (
             <FlatList
-                data={restaurants}
+                data={carpoolings}
                 keyExtractor={item => `${item.id}`}
                 renderItem={renderItem}
                 contentContainerStyle={{
