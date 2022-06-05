@@ -25,6 +25,7 @@ export const categoryData = [
         name: "Trottinette",
         icon: icons.ElectricScooter,
     },
+
   
 
 ]
@@ -35,10 +36,10 @@ export const fairPrice = 2
 export const expensive = 3
   
 
-export const restaurantData = [
+export const carpoolingData = [
     {  
         id: 1,
-        name: "ByProgrammers Burger",
+        name: "ByProgrammers AbdessamadPas",
         rating: 4.8,
         categories: [5, 7],
         priceRating: affordable,
@@ -81,7 +82,7 @@ export const restaurantData = [
     },
     {
         id: 2,
-        name: "ByProgrammers Pizza",
+        name: "ByProgrammers AbdessamadPas",
         rating: 4.8,
         categories: [2, 4, 6],
         priceRating: expensive,
@@ -142,6 +143,6 @@ export default {
     categoryData,
     affordable, 
     expensive, 
-    restaurantData
+    carpoolingData
 
 }
