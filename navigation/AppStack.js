@@ -9,60 +9,27 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/homeScreen';
 import TestCompoent from '../screens/testComponent';
 import ProfileScreen from '../screens/profileScreen';
+import CarpoolingDetailsScreen from '../screens/carpoolingDetailsScreen';
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+import tab from './secondRouterApp'
 
-const AppStack = () => (
-  <Tab.Navigator
-      tabBarOptions={{
-        activeTintColor: '#2e64e5',
-      }}>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({route}) => ({
-          tabBarLabel: 'Home',
-          // tabBarVisible: route.state && route.state.index === 0,
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons
-              name="home-outline"
-              color={color}
-              size={size}
-            />
-          ),
-        })}
-      />
-      <Tab.Screen
-        name="test"
-        component={TestCompoent}
-        options={({route}) => ({
-          tabBarVisible: true,
-          // Or Hide tabbar when push!
-          // https://github.com/react-navigation/react-navigation/issues/7677
-          // tabBarVisible: route.state && route.state.index === 0,
-          // tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <Ionicons
-              name="chatbox-ellipses-outline"
-              color={color}
-              size={size}
-            />
-          ),
-        })}
-      />
-      <Tab.Screen
-      name="Profile"
-      component={ProfileScreen}
-      options={{
-        // tabBarLabel: 'Home',
-        tabBarIcon: ({color, size}) => (
-          <Ionicons name="person-outline" color={color} size={size} />
-        ),
+const AppStack = () => {
+
+return(
+    <Stack.Navigator
+      screenOptions={{
+          headerShown: false
       }}
-    />
-    </Tab.Navigator>
+      initialRouteName={'Home'}
+    >
+      <Stack.Screen name="Home" component={tab} />
+      <Stack.Screen name="CarpoolingDetails" component={CarpoolingDetailsScreen} />
+    
+  </Stack.Navigator> 
 );
 
+}
+
  
-export default AppStack;
+export default AppStack; 

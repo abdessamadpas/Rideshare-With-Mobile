@@ -35,8 +35,8 @@ const Routes = () => {
   
 
   return (
-    <NavigationContainer>
-      {auth.currentUser ? <AppStack /> : <AuthStack />}
+    <NavigationContainer  >
+      {auth.currentUser ? <AppStack /> : <AppStack />}
     </NavigationContainer>
   );
 };
