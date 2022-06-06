@@ -10,6 +10,7 @@ import HomeScreen from '../screens/homeScreen';
 import TestCompoent from '../screens/testComponent';
 import ProfileScreen from '../screens/profileScreen';
 import CarpoolingDetailsScreen from '../screens/carpoolingDetailsScreen';
+import MapScreen from '../screens/mapScreen.jsx'
 
 const Stack = createNativeStackNavigator();
 import tab from './secondRouterApp'
@@ -25,6 +26,8 @@ return(
     >
       <Stack.Screen name="Home" component={tab} />
       <Stack.Screen name="CarpoolingDetails" component={CarpoolingDetailsScreen} />
+      <Stack.Screen name="MapScreen" component={MapScreen} />
+
     
   </Stack.Navigator> 
 );

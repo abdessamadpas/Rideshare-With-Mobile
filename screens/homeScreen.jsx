@@ -11,7 +11,7 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {initialCurrentLocation, categoryData,affordable, expensive, carpoolingData} from '../data'
+import {initialCurrentLocation, categoryData, carpoolingData} from '../data'
 const HomeScreen = ({ navigation }) => {
 
     const [categories, setCategories] = React.useState(categoryData)
@@ -160,7 +160,7 @@ const HomeScreen = ({ navigation }) => {
         )
     }
 
-    function renderRestaurantList() {
+    function renderCarpoolingList() {
         const renderItem = ({ item }) => (
             <TouchableOpacity
                 style={{ marginBottom: SIZES.padding * 2 }}
@@ -177,7 +177,7 @@ const HomeScreen = ({ navigation }) => {
                     }}
                 >
                     <Image
-                        source={item.photo}
+                        source={item.photos}
                         resizeMode="cover"
                         style={{
                             width: "100%",
@@ -204,7 +204,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                {/* Restaurant Info */}
+                {/* carpooling Info */}
                 <Text style={{ ...FONTS.body2 }}>{item.name}</Text>
 
                 <View
@@ -280,14 +280,14 @@ const HomeScreen = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             {renderHeader()}
             {renderMainCategories()}
-            {renderRestaurantList()}
+            {renderCarpoolingList()}
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      //  marginTop:30,
+        marginTop:20,
         flex: 1,
         backgroundColor: COLORS.lightGray4
     },

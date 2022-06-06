@@ -12,8 +12,8 @@ export const initialCurrentLocation = {
 export const categoryData = [
     {
         id: 1,
-        name: "bike",
-        //icon: icons.rice_bowl,
+        name: "bicycle",
+        icon: icons.bicycle,
     },
     {
         id: 2,
@@ -24,6 +24,10 @@ export const categoryData = [
         id: 3,
         name: "Trottinette",
         icon: icons.ElectricScooter,
+    }, {
+        id: 4,
+        name: "bike",
+        icon: icons.motorcycle,
     },
 
   
@@ -34,7 +38,8 @@ export const categoryData = [
 export const affordable = 1
 export const fairPrice = 2
 export const expensive = 3
-  
+
+
 
 export const carpoolingData = [
     {  
@@ -42,10 +47,20 @@ export const carpoolingData = [
         name: "By Programmer AbdessamadPas",
         rating: 4.8,
         categories: [2],
+        
         priceRating: affordable,
-        //photo: images.{image of carpooling },
+        
+        courier: {
+            avatar: images.avatar_2,
+            name: "imane"
+        },
+        photos: images.car,
         duration: "30 - 45 min",
-        location: {
+        locationFrom: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+        locationTo: {
             latitude: 1.5347282806345879,
             longitude: 110.35632207358996,
         },
@@ -54,17 +69,17 @@ export const carpoolingData = [
             {
                 userId: 1,
                 name: "imane",
-              //  photo: images.{imageprofile},
+                photo: images.avatar_1,
                 description: "hello im imane ",
                 calories: 200,
-                price: 10
+                userRating: 2.5,
             },    {
                 userId: 2,
                 name: "abdou",
-               // photo: images.{imageprofile},
+                photo: images.avatar_2,
                 description: "hello im abdou ",
                 calories: 200,
-                price: 10
+                userRating: 2.5,
             },
            
         ]
@@ -75,25 +90,56 @@ export const carpoolingData = [
         rating: 4.8,
         categories: [2, 1],
         priceRating: expensive,
-         //photo: images.{image of carpooling },
+        photos: images.car2,
         duration: "15 - 20 min",
-        location: {
-            latitude: 1.556306570595712,
-            longitude: 110.35504616746915,
+        locationFrom: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+        locationTo: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
         },
         rideShares: [
             {
                 userId: 3,
                 name: "ziko",
-               // photo: images.{imageprofile},
+               photo: images.avatar_3,
                 description: "hello im ziko",
                 calories: 250,
-                price: 15
+                userRating: 2.5,
             },
         
         ]
     },
-
+    {
+        id: 3,
+        name: "By Programmer AbdessamadPas",
+        rating: 4.8,
+        categories: [2, 1],
+        priceRating: expensive,
+        photos: images.car3,
+        duration: "15 - 20 min",
+        locationFrom: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+        locationTo: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+        rideShares: [
+            {
+                userId: 3,
+                name: "ziko",
+                photo: images.avatar_5,
+                description: "hello im ziko",
+                calories: 250,
+                userRating: 2.5,
+            },
+        
+        ]
+    },
 
 
 
@@ -105,6 +151,7 @@ export default {
     categoryData,
     affordable, 
     expensive, 
-    carpoolingData
+    carpoolingData,
+    
 
 }

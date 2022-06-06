@@ -1,5 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
 //import auth from '@react-native-firebase/auth';
 import { auth } from "../firebase-config";
 import { getAuth } from "firebase/auth";
@@ -35,9 +37,13 @@ const Routes = () => {
   
 
   return (
+    <SafeAreaProvider>
+
     <NavigationContainer  >
       {auth.currentUser ? <AppStack /> : <AppStack />}
     </NavigationContainer>
+    </SafeAreaProvider>
+
   );
 };
 
