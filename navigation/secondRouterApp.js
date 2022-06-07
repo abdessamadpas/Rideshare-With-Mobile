@@ -4,7 +4,7 @@ import React from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import AddPostScreen from '../screens/AddPostScreen';
 import HomeScreen from '../screens/homeScreen';
 import TestCompoent from '../screens/testComponent';
 import ProfileScreen from '../screens/profileScreen';
@@ -35,6 +35,22 @@ const tab = () => (
                 ),
               })}
             />
+            <Tab.Screen
+            name="AddPostScreen"
+            component={AddPostScreen}
+            options={({route}) => ({
+              tabBarLabel: 'add offre',
+               tabBarVisible: false,
+              tabBarIcon: ({color, size, focused}) => (
+                <MaterialCommunityIcons
+                  name="home-outline"
+                  color={color}
+                  size={size}
+                />
+              ),
+            })}
+          />
+            
             <Tab.Screen
               name="chat"
               component={TestCompoent}

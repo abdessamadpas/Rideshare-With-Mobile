@@ -47,11 +47,14 @@ export const carpoolingData = [
         name: "By Programmer AbdessamadPas",
         rating: 4.8,
         categories: [2],
-        
+        images:[
+            
+        ]
+        ,
         priceRating: affordable,
         
-        courier: {
-            avatar: images.avatar_2,
+        user: {
+            avatar: images.avatar_1,
             name: "imane"
         },
         photos: images.car,
@@ -87,6 +90,11 @@ export const carpoolingData = [
     {
         id: 2,
         name: "By Programmer AbdessamadPas",
+        user: {
+            avatar: images.avatar_2,
+            name: "imane"
+        },
+
         rating: 4.8,
         categories: [2, 1],
         priceRating: expensive,
@@ -115,6 +123,11 @@ export const carpoolingData = [
     {
         id: 3,
         name: "By Programmer AbdessamadPas",
+        
+        user: {
+            avatar: images.avatar_3,
+            name: "imane"
+        },
         rating: 4.8,
         categories: [2, 1],
         priceRating: expensive,

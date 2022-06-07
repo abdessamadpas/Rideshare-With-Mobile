@@ -254,7 +254,7 @@ SetCarpoolingInfo
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         {/* Avatar */}
                         <Image
-                            source={carpoolingInfo?.courier.avatar}
+                            source={carpoolingInfo?.user.avatar}
                             style={{
                                 width: 50,
                                 height: 50,
@@ -265,7 +265,7 @@ SetCarpoolingInfo
                         <View style={{ flex: 1, marginLeft: SIZES.padding }}>
                             {/* Name & Rating */}
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text style={{ ...FONTS.h4 }}>{carpoolingInfo?.courier.name}</Text>
+                                <Text style={{ ...FONTS.h4 }}>{carpoolingInfo?.user.name}</Text>
                                 <View style={{ flexDirection: 'row' }}>
                                     <Image
                                         source={icons.star}
