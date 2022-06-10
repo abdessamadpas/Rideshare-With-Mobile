@@ -17,6 +17,16 @@ export const InputField = styled.TextInput`
     margin-bottom: 15px;
 `;
 
+export const TextInput = styled.TextInput`
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    width:90%;
+    margin-bottom: 15px;
+    borde
+`;
+
 export const AddImage = styled.Image`
     width: 100%;
     height: 250px;
