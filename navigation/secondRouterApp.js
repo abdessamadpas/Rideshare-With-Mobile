@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AddPostScreen from '../screens/AddPostScreen';
@@ -12,7 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-const tab = () => (
+const Tabb = () => (
         <Tab.Navigator
         screenOptions={{
           headerShown: false
@@ -42,8 +43,8 @@ const tab = () => (
               tabBarLabel: 'add offre',
                tabBarVisible: false,
               tabBarIcon: ({color, size, focused}) => (
-                <MaterialCommunityIcons
-                  name="home-outline"
+                <Ionicons
+                  name="ios-add-circle-outline"
                   color={color}
                   size={size}
                 />
@@ -84,4 +85,4 @@ const tab = () => (
   
     )
 
-export default tab
+export default Tabb

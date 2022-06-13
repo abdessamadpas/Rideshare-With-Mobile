@@ -7,14 +7,18 @@ import {
   Alert,
   ActivityIndicator
 } from 'react-native';
+import { initializeApp } from "firebase/app";
+import { COLORS} from '../constants'
+
+
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
-
+import {firebaseConfig} from '../firebase-config'
 import { getStorage, ref ,uploadBytes ,getDownloadURL } from "firebase/storage";
 import { doc, setDoc, Timestamp,addDoc , collection } from "firebase/firestore"; 
 
-
+initializeApp(firebaseConfig)
 
 import {dbFirestore} from '../firebase-config'
 
@@ -93,11 +97,12 @@ useEffect(() => {
     const imageUrl = await uploadImage();
     console.log('Image Url: ', imageUrl);
     console.log('Post: ', postName);
+    console.log('user.user.providerData.uid: ', user.user.uid);
 
 
 
-      addDoc(collection(dbFirestore, "test"), {
-      //userId: user.uid,
+      addDoc(collection(dbFirestore, "posts"), {
+      userId: user.user.uid,
       postName: postName,
       postImg: imageUrl,
       postTime: Timestamp.fromDate(new Date()),
@@ -143,14 +148,14 @@ useEffect(() => {
    // console.log(storageRef);
    // const task = storageRef.put(uploadUri);
 
-    const task = await uploadBytes(storageRef, bytes).then((taskSnapshot) => {
+    const task = await uploadBytes(storageRef, bytes).then((x) => {
       console.log('snapshot');
       console.log(
-        `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`,
+        `${x.bytesTransferred} transferred out of ${x.totalBytes}`,
       );
 
       setTransferred(
-        Math.round(taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) *
+        Math.round(x.bytesTransferred / x.totalBytes) *
           100,
       );
     });
@@ -177,14 +182,11 @@ useEffect(() => {
         setUriImageFirestore(x)
         return x
       });
-      console.log("url azbi ", urlfetch);
+      console.log("url  ", urlfetch);
       setUploading(false);
       setImage(null);
 
-       Alert.alert(
-         'Image uploaded!',
-         'Your image has been uploaded to the Firebase Cloud Storage Successfully!',
-       );
+      
       return urlfetch;
 
     } catch (e) {
@@ -203,7 +205,7 @@ useEffect(() => {
         style={styles.input}
         onChangeText={(content) => setPostName(content)}
         value={postName}
-        placeholder="postName  "
+        placeholder="postName"
       />
         <TextInput
         style={styles.input}
@@ -217,8 +219,8 @@ useEffect(() => {
         value={to}
         placeholder="to "
       />
-        <InputField
-          placeholder="how much cost dude "
+        <TextInput
+          placeholder="how much cost"
           multiline
           numberOfLines={1}
           value={price}
@@ -227,7 +229,7 @@ useEffect(() => {
 
         {uploading ? (
           <StatusWrapper>
-            <Text>{transferred} % Completed!</Text>
+            <Text>loading </Text>
             <ActivityIndicator size="large" color="#0000ff" />
           </StatusWrapper>
         ) : (
@@ -236,9 +238,9 @@ useEffect(() => {
           </SubmitBtn>
         )}
       </InputWrapper>
-      <ActionButton buttonColor="#2e64e5">
+      <ActionButton buttonColor="#ffee54">
         <ActionButton.Item
-          buttonColor="#9b59b6"
+          buttonColor="#CDCDD2"
           title="Take Photo"
           onPress={takePhotoFromCamera}>
           <Icon name="camera-outline" style={styles.actionButtonIcon} />
@@ -261,7 +263,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+   // backgroundColor:'#F8F8F9',
+  //  backgroundColor: COLORS.lightGray4
+    backgroundColor: COLORS.lightGray
+
   },
+  
+
   actionButtonIcon: {
     fontSize: 20,
     height: 22,

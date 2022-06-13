@@ -5,7 +5,7 @@ export const InputWrapper = styled.View`
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #2e64e515;
+    
 `;
 
 export const InputField = styled.TextInput`
@@ -21,10 +21,14 @@ export const TextInput = styled.TextInput`
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    text-align: center;
+    paddingHorizontal : 20px;
     width:90%;
+    marginHorizontal: 80px;
     margin-bottom: 15px;
-    borde
+    borderWidth: 1px;
+    borderColor: "thistle";
+    borderRadius: 50px;
+    height: 50px;
 `;
 
 export const AddImage = styled.Image`
@@ -42,8 +46,8 @@ export const SubmitBtn = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: center;
     background-color: #2e64e515;
-    border-radius: 5px;
-    padding: 10px 25px;
+    border-radius: 25px;
+    padding: 10px 60px;
 `;
 
 export const SubmitBtnText = styled.Text`

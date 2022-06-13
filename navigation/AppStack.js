@@ -11,9 +11,10 @@ import TestCompoent from '../screens/testComponent';
 import ProfileScreen from '../screens/profileScreen';
 import CarpoolingDetailsScreen from '../screens/carpoolingDetailsScreen';
 import MapScreen from '../screens/mapScreen.jsx'
+import EditeProfile from '../screens/editeProfile';
 
 const Stack = createNativeStackNavigator();
-import tab from './secondRouterApp'
+import Tabb from './secondRouterApp'
 
 const AppStack = () => {
 
@@ -24,9 +25,10 @@ return(
       }}
       initialRouteName={'Home'}
     >
-      <Stack.Screen name="Home" component={tab} />
+      <Stack.Screen name="Home" component={Tabb} />
       <Stack.Screen name="CarpoolingDetails" component={CarpoolingDetailsScreen} />
       <Stack.Screen name="MapScreen" component={MapScreen} />
+      <Stack.Screen name="EditeProfile" component={EditeProfile} />
 
     
   </Stack.Navigator> 

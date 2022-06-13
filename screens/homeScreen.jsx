@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
     SafeAreaView,
     View,
@@ -8,6 +8,10 @@ import {
     Image,
     FlatList
 } from "react-native";
+import firestore from 'firebase/firestore';
+
+
+        
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
@@ -18,9 +22,14 @@ const HomeScreen = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = React.useState(null)
     const [carpoolings, setCarpoolings] = React.useState(carpoolingData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
+useEffect(() => {
+    const users =  firestore().collection('postes').get();
+    console.log(users);
+}, [])
 
 
     function onSelectCategory(category) {
+        console.log(users);
         //filter restaurant
         let carpoolingList = carpoolingData.filter(a => a.categories.includes(category.id))
 
@@ -289,7 +298,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop:20,
         flex: 1,
-        backgroundColor: COLORS.lightGray4
+        backgroundColor: COLORS.lightGray
     },
     shadow: {
         shadowColor: "#000",

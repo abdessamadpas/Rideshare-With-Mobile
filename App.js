@@ -1,3 +1,6 @@
+
+
+import 'react-native-gesture-handler'
 import react,{ useState } from "react";
 import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 import AppIntroSlider from "react-native-app-intro-slider";
