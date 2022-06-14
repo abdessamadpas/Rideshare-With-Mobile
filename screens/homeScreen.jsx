@@ -8,10 +8,11 @@ import {
     Image,
     FlatList
 } from "react-native";
-import firestore from 'firebase/firestore';
+//import firestore from '../firebase-config'
 
-
+import dbFirestore from '../firebase-config'
         
+import { doc, setDoc, Timestamp,addDoc , collection , getDoc} from "firebase/firestore"; 
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
@@ -23,8 +24,11 @@ const HomeScreen = ({ navigation }) => {
     const [carpoolings, setCarpoolings] = React.useState(carpoolingData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 useEffect(() => {
-    const users =  firestore().collection('postes').get();
-    console.log(users);
+    console.log('11111111111111111111111111111111111');
+  //  const users =  collection(dbFirestore,'posts');
+    const docRef = doc(dbFirestore, 'posts');
+    const docSnap =  getDoc(docRef);
+    console.log("weeeeewweee", docSnap);
 }, [])
 
 

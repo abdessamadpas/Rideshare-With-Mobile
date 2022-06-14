@@ -23,10 +23,7 @@ import { getFirestore, setDoc, doc } from 'firebase/firestore';
   measurementId: "G-9E2NQZ7RSQ"
 };
 
-
-
-
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);;
 export const dbFirestore = getFirestore(app);
-export { firebase }
+//export { firebase }
