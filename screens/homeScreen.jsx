@@ -8,9 +8,12 @@ import {
     Image,
     FlatList
 } from "react-native";
-//import firestore from '../firebase-config'
+import firestore from '../firebase-config'
+
 
 import dbFirestore from '../firebase-config'
+
+import app from '../firebase-config'
         
 import { doc, setDoc, Timestamp,addDoc , collection , getDoc} from "firebase/firestore"; 
 
@@ -23,17 +26,35 @@ const HomeScreen = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = React.useState(null)
     const [carpoolings, setCarpoolings] = React.useState(carpoolingData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
-useEffect(() => {
-    console.log('11111111111111111111111111111111111');
-  //  const users =  collection(dbFirestore,'posts');
-    const docRef = doc(dbFirestore, 'posts');
-    const docSnap =  getDoc(docRef);
-    console.log("weeeeewweee", docSnap);
-}, [])
 
+
+    //* firestore app inisializ
+   // const toref = firebase().firestore().collection("posts")
+const test =()=>{
+    console.log('test for firestore tests ');
+    const docRef = doc(dbFirestore, "posts", "wewe");
+    const docSnap =  getDoc(docRef);
+    
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+}
+   
+  //  const users =  collection(dbFirestore,'posts');
+  //const usersCollection = collection(dbFirestore,'posts');
+
+
+
+
+   // console.log("weeeeewweee")},[])
+
+  
 
     function onSelectCategory(category) {
-        console.log(users);
+        //console.log(users);
         //filter restaurant
         let carpoolingList = carpoolingData.filter(a => a.categories.includes(category.id))
 
@@ -121,7 +142,9 @@ useEffect(() => {
                         marginRight: SIZES.padding,
                         ...styles.shadow
                     }}
-                    onPress={() => onSelectCategory(item)}
+                    onPress={() =>{ onSelectCategory(item)
+                        test()
+                    }}
                 >
                     <View
                         style={{

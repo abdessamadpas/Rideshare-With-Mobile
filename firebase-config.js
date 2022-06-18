@@ -7,12 +7,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, setDoc, doc } from 'firebase/firestore';
 
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
- export const firebaseConfig = {
+
+export const firebaseConfig = {
   apiKey: "AIzaSyB9MuQ8eRxecLiH9sAsUNn1ly-hom1yyEE",
   authDomain: "test-login-1f731.firebaseapp.com",
   databaseURL: "https://test-login-1f731-default-rtdb.firebaseio.com",
@@ -23,7 +23,7 @@ import { getFirestore, setDoc, doc } from 'firebase/firestore';
   measurementId: "G-9E2NQZ7RSQ"
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);;
 export const dbFirestore = getFirestore(app);
 //export { firebase }

@@ -31,15 +31,15 @@ const Routes = () => {
 
   // if (initializing) return null;
   useEffect(() => {
-    console.log(user);
-    console.log(auth);
+   // console.log(user);
+  //  console.log(auth);
   }, [user])
 
   return (
     <SafeAreaProvider>
 
     <NavigationContainer  >
-      {auth.currentUser ? <AppStack /> : <AppStack />}
+      {auth.currentUser ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
     </SafeAreaProvider>
 
