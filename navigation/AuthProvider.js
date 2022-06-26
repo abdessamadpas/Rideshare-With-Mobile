@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword , createUserWithEmailAndPassword,signOut ,si
 
 //import firestore from '@react-native-firebase/firestore';
 //const auth = getAuth();
-console.log(auth);
+//console.log(auth);
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children }) => {

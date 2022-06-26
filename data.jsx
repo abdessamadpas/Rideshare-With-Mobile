@@ -1,3 +1,5 @@
+import React ,{useState} from 'react' 
+
 import { icons, images, SIZES, COLORS, FONTS } from './constants'
 
 
@@ -36,60 +38,15 @@ export const categoryData = [
 
 
 export const affordable = 1
-export const fairPrice = 2
-export const expensive = 3
+export const fairPrice  = 2
+export const expensive  = 3
 
 
 
 export const carpoolingData = [
-    {  
-        id: 1,
-        name: "By Programmer AbdessamadPas",
-        rating: 4.8,
-        categories: [2],
-        images:[
-            
-        ]
-        ,
-        priceRating: affordable,
-        
-        user: {
-            avatar: images.avatar_1,
-            name: "imane"
-        },
-        photos: images.car,
-        duration: "30 - 45 min",
-        locationFrom: {
-            latitude: 1.5347282806345879,
-            longitude: 110.35632207358996,
-        },
-        locationTo: {
-            latitude: 1.5347282806345879,
-            longitude: 110.35632207358996,
-        },
-      
-        rideShares: [
-            {
-                userId: 1,
-                name: "imane",
-                photo: images.avatar_1,
-                description: "hello im imane ",
-                calories: 200,
-                userRating: 2.5,
-            },    {
-                userId: 2,
-                name: "abdou",
-                photo: images.avatar_2,
-                description: "hello im abdou ",
-                calories: 200,
-                userRating: 2.5,
-            },
-           
-        ]
-    },
     {
         id: 2,
-        name: "By Programmer AbdessamadPas",
+        name: "zakaria",
         user: {
             avatar: images.avatar_2,
             name: "imane"
@@ -118,11 +75,96 @@ export const carpoolingData = [
                 userRating: 2.5,
             },
         
+        ],
+        wewe: [
+            {
+                userId: 1,
+                name: "imane",
+                photo: images.car,
+                description: "hello im imane ",
+                calories: 200,
+                userRating: 2.5,
+            },    {
+                userId: 2,
+                name: "abdou",
+                photo: images.car2,
+                description: "hello im abdou ",
+                calories: 200,
+                userRating: 2.5,
+            },
+           
+        ]
+    },{  
+        id: 2,
+        name: "user1",
+        rating: 4.8,
+        categories: [2],
+        images:[
+            
+        ]
+        ,
+        priceRating: affordable,
+        
+        user: {
+            avatar: images.avatar_1,
+            name: "imane"
+        },
+        photos: [
+            
+           
+        ],
+       
+        duration: "30 - 45 min",
+        locationFrom: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+        locationTo: {
+            latitude: 1.5347282806345879,
+            longitude: 110.35632207358996,
+        },
+      
+        rideShares: [
+            {
+                userId: 1,
+                name: "imane",
+                photo: images.avatar_1,
+                description: "hello im imane ",
+                calories: 200,
+                userRating: 2.5,
+            },    {
+                userId: 2,
+                name: "abdou",
+                photo: images.avatar_2,
+                description: "hello im abdou ",
+                calories: 200,
+                userRating: 2.5,
+            },
+           
+        ],
+        wewe: [
+            {
+                userId: 1,
+                name: "imane",
+                photo: images.car,
+                description: "hello im imane ",
+                calories: 200,
+                userRating: 2.5,
+            },    {
+                userId: 2,
+                name: "abdou",
+                photo: images.car2,
+                description: "hello im abdou ",
+                calories: 200,
+                userRating: 2.5,
+            },
+           
         ]
     },
+    
     {
         id: 3,
-        name: "By Programmer AbdessamadPas",
+        name: "zakaria  ",
         
         user: {
             avatar: images.avatar_3,
@@ -151,6 +193,24 @@ export const carpoolingData = [
                 userRating: 2.5,
             },
         
+        ],
+        wewe: [
+            {
+                userId: 1,
+                name: "imane",
+                photo: images.car,
+                description: "hello im imane ",
+                calories: 200,
+                userRating: 2.5,
+            },    {
+                userId: 2,
+                name: "abdou",
+                photo: images.car2,
+                description: "hello im abdou ",
+                calories: 200,
+                userRating: 2.5,
+            },
+           
         ]
     },
 

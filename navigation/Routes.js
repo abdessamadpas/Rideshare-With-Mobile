@@ -39,7 +39,7 @@ const Routes = () => {
     <SafeAreaProvider>
 
     <NavigationContainer  >
-      {auth.currentUser ? <AppStack /> : <AuthStack />}
+       {auth.currentUser ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
     </SafeAreaProvider>
 

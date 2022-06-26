@@ -32,7 +32,7 @@ const ProfileScreen = ({navigation}) => {
             <Title style={[styles.title, {
               marginTop:15,
               marginBottom: 5,
-            }]}>by abdessamadPsas</Title>
+            }]}>by user 1</Title>
             <Caption style={styles.caption}>@Pas</Caption>
           </View>
         </View>
@@ -49,7 +49,7 @@ const ProfileScreen = ({navigation}) => {
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>abdopas@email.com</Text>
+          <Text style={{color:"#777777", marginLeft: 20}}>user1@email.com</Text>
         </View>
       </View>
 

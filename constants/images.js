@@ -8,6 +8,7 @@ const car = require("../assets/images/car.webp");
 const car2 = require("../assets/images/car2.webp");
 const car3 = require("../assets/images/car3.webp");
 const bicycle = require("../assets/images/bicycle.png");
+const login =  require("../assets/images/login.webp")
 
 export default {
     avatar_1,
@@ -18,5 +19,7 @@ export default {
     car,
     car2,
     car3, 
-    bicycle
+    bicycle,
+    login,
+    
 }

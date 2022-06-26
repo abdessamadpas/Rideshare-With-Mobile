@@ -12,7 +12,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {AuthContext} from '../navigation/AuthProvider';
-
+import {login} from '../constants/images/'
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -22,7 +22,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={require('../assets/onboarding-img2.png')}
+        source={require('../assets/images/login.png')}
         style={styles.logo}
       />
       <Text style={styles.text}>carpooling</Text>
@@ -96,8 +96,10 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    paddingTop: 50
+    padding:40 ,
+    paddingVertical: 60,
+    
+    paddingTop: 80
   },
   logo: {
     height: 150,

@@ -15,10 +15,12 @@ import dbFirestore from '../firebase-config'
 
 import app from '../firebase-config'
         
-import { doc, setDoc, Timestamp,addDoc , collection , getDoc} from "firebase/firestore"; 
+import { doc, setDoc, Timestamp,addDoc , collection , getDocs, QuerySnapshot} from "firebase/firestore"; 
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
+import {postsRef } from '../firebase-config'
+ 
 import {initialCurrentLocation, categoryData, carpoolingData} from '../data'
 const HomeScreen = ({ navigation }) => {
 
@@ -33,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
 const test =()=>{
     console.log('test for firestore tests ');
     const docRef = doc(dbFirestore, "posts", "wewe");
-    const docSnap =  getDoc(docRef);
+    const docSnap =  getDocs(docRef);
     
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
@@ -42,7 +44,24 @@ const test =()=>{
       console.log("No such document!");
     }
 }
-   
+ 
+
+//get collection datav
+// useEffect(() => {
+//  postsRef
+//  .onSnapshot(  
+//     QuerySnapshot=>{
+//         const
+//     }
+//   )=>{
+
+//  }
+//     .then((snapshot)=> {
+//     console.log(snapshot.docs.vh._document.ie.data)
+//    })
+
+// }, [])
+
   //  const users =  collection(dbFirestore,'posts');
   //const usersCollection = collection(dbFirestore,'posts');
 

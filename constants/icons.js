@@ -32,5 +32,5 @@ export default {
     ElectricScooter,
     bicycle,
     motorcycle
-
+    
 }

@@ -120,7 +120,7 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                 ], { useNativeDriver: false })}
             >
                 {
-                  carpoolingInfo?.rideShares.map((item, index) => (
+                  carpoolingInfo?.wewe.map((item, index) => (
                         <View 
                             key={`menu-${index}`}
                             style={{ alignItems: 'center',  }}
