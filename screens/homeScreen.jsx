@@ -1,4 +1,6 @@
 import React,{useEffect} from "react";
+import { getFirestore } from 'firebase/firestore';
+
 import {
     SafeAreaView,
     View,
@@ -44,6 +46,16 @@ const test =()=>{
       console.log("No such document!");
     }
 }
+const db = getFirestore();
+
+const wewe= async ()=>{
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+}
+
  
 
 //get collection datav
@@ -223,7 +235,9 @@ const test =()=>{
                    navigation.navigate("CarpoolingDetails", {
                     item,
                     currentLocation
-                })}}
+                })
+                wewe()
+            }}
             >
                 {/* Image */}
                 <View
