@@ -17,28 +17,50 @@ const { width, height } = Dimensions.get("window");
 
 
 import { icons, COLORS, SIZES, FONTS } from '../constants'
-
+import {carpoolingData} from '../data'
 const CarpoolingDetailsScreen = ({navigation, route}) => {
 
-    const [carpoolingInfo, SetCarpoolingInfo]=useState(null)
+    const { currentLocation } =  route.params;
+   // const carpoolingData = []
+      useEffect(() => {
+        console.log("CarpoolingDetailsScreen", carpoolingInfo);
+
+       }, [carpoolingInfo])
+
+    const [carpoolingInfo, setCarpoolingInfo]=useState({})
     const [currentPosition, setCurrentPosition]=useState(null)
 
+
     useEffect( () => {
-      
+        //const array = []
+
         let { item, currentLocation } =  route.params;
-        SetCarpoolingInfo(item)
+     //   array.push(item)
+       // console.log("iteeeeemmmmmm", item);
+     //   setCarpoolingInfo(item)
+      //  console.log("carpollling dataaaaaaa",carpoolingInfo);
         setCurrentPosition(currentLocation)
-        
-    },[route.params])
-  
+       // console.log('wwwwwwwwwwwwwwwww',carpoolingData);
+        fetch()
+    }   ,[route])
+
+    const fetch =async ()=>{
+        let { item } = await route.params;
+        setCarpoolingInfo(item)
+
+    }
+     useEffect(() => {
+      console.log(carpoolingInfo);
+     }, [carpoolingInfo])
+
 
     const scrollX = new Animated.Value(0);
-    
+
     //const [orderBokking, setOrderBokking] = React.useState([]);
 
-   
 
-   
+
+
 
 
     function renderHeader() {
@@ -62,7 +84,7 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                     />
                 </TouchableOpacity>
 
-               
+
                 <View
                     style={{
                         flex: 1,
@@ -106,9 +128,8 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
 
     function renderRideInfo() {
         return (
-          <View style={{ marginVertical:10,}}>
-          
-         
+           <View style={{ marginVertical:10,}}>
+
             <Animated.ScrollView
                 horizontal
                 pagingEnabled
@@ -119,27 +140,26 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                     { nativeEvent: { contentOffset: { x: scrollX } } }
                 ], { useNativeDriver: false })}
             >
-                {
-                  carpoolingInfo?.wewe.map((item, index) => (
-                        <View 
+               {carpoolingInfo && carpoolingInfo?.wewe?.map((item, index) => (
+                        <View
                             key={`menu-${index}`}
                             style={{ alignItems: 'center',  }}
                         >
                             <View style={{ height: SIZES.height * 0.35 }}>
                                 {/* user Image */}
                                 <Image
-                                    source={item.photo}
+                                source={{uri: item.image}}
                                     resizeMode="contain"
                                     style={{
                                       marginTop:10,
                                         width: SIZES.width,
                                         height: "100%",
-                                       
+
                                     }}
                                 />
 
-                               
-                             
+
+
                             </View>
 
                             {/* Name & Description */}
@@ -151,8 +171,8 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - {item.userRating.toFixed(1)}</Text>
-                                <Text style={{ ...FONTS.body3 }}>{item.description}</Text>
+                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - {item?.userRating?.toFixed(1)}</Text>
+                                <Text style={{ ...FONTS.body3 }}>{item.name}</Text>
                             </View>
 
                             {/* Calories */}
@@ -174,125 +194,127 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                                     }}
                                 />
 
-                                
+
                             </View>
                         </View>
                     ))
                 }
             </Animated.ScrollView>
-            </View>
+
+           </View>
+
               )}
 
 
-            function newScroll() {
+             function newScroll() {
                 return (
-                <View style={ {height:120 }}> 
-                <Text style={{paddingVertical:10 }}> Rideshares ( 2 )</Text>
+                 <View style={ {height:120 }}>
+                 <Text style={{paddingVertical:10 }}> Rideshares ( 4 )</Text>
 
-                  <ScrollView
-                    horizontal ={true}
-                  
-                >
-                    {
-                      carpoolingInfo?.rideShares.map((item, index) => (
-                          <TouchableOpacity
-                style={{ marginBottom: SIZES.padding * 2 }}
-                onPress={() =>{
-                   navigation.navigate("wewe", {
-                    item,
-                    
-                })}}
-            >
-                      
-                            <View 
-                                key={`menu-${index}`}
-                                style={{ alignItems: 'center',height: "100%", marginBottom:-80, width: 60 }}
-                            >
-                                <View style={{ height: "100%",    }}>
-                                    {/* user Image */}
-                                    <Image
-                                        source={item.photo}
-                                        resizeMode="contain"
-                                        style={{
-                                          
-                                            width: SIZES.width,
-                                          height: "100%",
-                                          
-                                        }}
-                                    />
+                   <ScrollView
+                     horizontal ={true}
 
-                                    {/* Quantity */}
-                                
-                                </View>
+                 >
+                     {
+                        carpoolingData[0]?.rideShares.map((item, index) => (
+                           <TouchableOpacity
+                 style={{ marginBottom: SIZES.padding * 2 }}
+                 onPress={() =>{
+                    navigation.navigate("wewe", {
+                     item,
 
-                                {/* Name & Description */}
-                                
+                 })}}
+             >
 
-                             
-                            </View>
-                           
-                            </TouchableOpacity>
-                        
+                             <View
+                                 key={`menu-${index}`}
+                                 style={{ alignItems: 'center',height: "100%", marginBottom:-80, width: 70 }}
+                             >
+                                 <View style={{ height: "100%", marginRight: 14   }}>
+                                     {/* user Image */}
+                                     <Image
+                                         source={item.photo}
+                                         resizeMode="contain"
+                                         style={{
+
+                                             width: SIZES.width,
+                                           height: "100%",
+
+                                         }}
+                                     />
+
+                                     {/* Quantity */}
+
+                                 </View>
+
+                                 {/* Name & Description */}
+
+
+
+                             </View>
+
+                             </TouchableOpacity>
+
                         ))
                     }
                 </ScrollView>
-        </View>
-        
-        )}
-   
+         </View>
 
-    function renderDots() {
+         )}
 
-        const dotPosition = Animated.divide(scrollX, SIZES.width)
+
+     function renderDots() {
+
+         const dotPosition = Animated.divide(scrollX, SIZES.width)
 
         return (
-            <View style={{ height: 30 }}>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: SIZES.padding
-                    }}
-                >
-                    {carpoolingInfo?.rideShares.map((item, index) => {
+             <View style={{ height: 30 }}>
+                 <View
+                     style={{
+                         flexDirection: 'row',
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                         height: SIZES.padding
+                     }}
+                 >
+                     {carpoolingData[0]?.rideShares.map((item, index) => {
 
-                        const opacity = dotPosition.interpolate({
-                            inputRange: [index - 1, index, index + 1],
-                            outputRange: [0.3, 1, 0.3],
-                            extrapolate: "clamp"
-                        })
+                         const opacity = dotPosition.interpolate({
+                             inputRange: [index - 1, index, index + 1],
+                             outputRange: [0.3, 1, 0.3],
+                             extrapolate: "clamp"
+                         })
 
-                        const dotSize = dotPosition.interpolate({
-                            inputRange: [index - 1, index, index + 1],
-                            outputRange: [SIZES.base * 0.8, 10, SIZES.base * 0.8],
-                            extrapolate: "clamp"
-                        })
+                         const dotSize = dotPosition.interpolate({
+                             inputRange: [index - 1, index, index + 1],
+                             outputRange: [SIZES.base * 0.8, 10, SIZES.base * 0.8],
+                             extrapolate: "clamp"
+                         })
 
-                        const dotColor = dotPosition.interpolate({
-                            inputRange: [index - 1, index, index + 1],
-                            outputRange: [COLORS.darkgray, COLORS.primary, COLORS.darkgray],
-                            extrapolate: "clamp"
-                        })
+                         const dotColor = dotPosition.interpolate({
+                             inputRange: [index - 1, index, index + 1],
+                             outputRange: [COLORS.darkgray, COLORS.primary, COLORS.darkgray],
+                             extrapolate: "clamp"
+                         })
 
-                        return (
-                            <Animated.View
-                                key={`dot-${index}`}
-                                opacity={opacity}
-                                style={{
-                                    borderRadius: SIZES.radius,
-                                    marginHorizontal: 6,
-                                    width: dotSize,
-                                    height: dotSize,
-                                    backgroundColor: dotColor
-                                }}
-                            />
-                        )
-                    })}
-                </View>
-            </View>
-        )
-    }
+                         return (
+                             <Animated.View
+                                 key={`dot-${index}`}
+                               opacity={opacity}
+                                 style={{
+                                     borderRadius: SIZES.radius,
+                                     marginHorizontal: 6,
+                                     width: dotSize,
+                                     height: dotSize,
+                                     backgroundColor: dotColor
+                                 }}
+                             />
+                         )
+                     })}
+                 </View>
+             </View>
+         )
+     }
 
     function renderBooking() {
         return (
@@ -318,8 +340,8 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                         }}
                     >
                         <Text style={{ ...FONTS.h3 }}>The price is  </Text>
-                      
-                        <Text style={{ ...FONTS.h3 }}>$ 10.00</Text>
+
+                        <Text style={{ ...FONTS.h3 }}>{carpoolingInfo.price}$</Text>
                     </View>
 
                     <View
@@ -353,7 +375,7 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                                     tintColor: COLORS.darkgray
                                 }}
                             />
-                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>Casablanca</Text>
+                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>{carpoolingInfo.to}</Text>
                         </View>
                     </View>
 
@@ -393,7 +415,7 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
                             backgroundColor: COLORS.white
                         }}
                     >
-                    </View> 
+                    </View>
             </View>
         )
     }
@@ -403,19 +425,19 @@ const CarpoolingDetailsScreen = ({navigation, route}) => {
             <View style={{flex: .8}}>
             {renderHeader()}
             {renderRideInfo()}
-            {newScroll()}
+         {newScroll()}
             </View>
            <View style={{flex: .32 }}>
            {renderBooking()}
            </View>
-           
+
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-     
+
       marginTop:30,
         flex: 1,
         backgroundColor: COLORS.lightGray2,

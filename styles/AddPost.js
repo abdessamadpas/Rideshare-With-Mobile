@@ -32,9 +32,12 @@ export const TextInput = styled.TextInput`
 `;
 
 export const AddImage = styled.Image`
-    width: 100%;
+    width:95%;
     height: 250px;
     margin-bottom: 15px;
+    padding: 5px;
+    borderRadius: 40px;
+
 `;
 
 export const StatusWrapper = styled.View`

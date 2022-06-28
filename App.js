@@ -9,6 +9,8 @@ import Providers from "./navigation";
 
 
 export default function App() {
+  console.disableYellowBox = true; 
+
     return(
       <Providers/>
     )

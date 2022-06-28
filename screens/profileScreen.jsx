@@ -11,7 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
+import {logo} from '../constants/icons.js'
 
 
 const ProfileScreen = ({navigation}) => {
@@ -24,7 +24,7 @@ const ProfileScreen = ({navigation}) => {
           <Avatar.Image 
             source={
             //  uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
-           require("../assets/icons/fire.png")
+           require("../assets/images/logo.jpg")
           }
             size={80}
           />
@@ -32,7 +32,7 @@ const ProfileScreen = ({navigation}) => {
             <Title style={[styles.title, {
               marginTop:15,
               marginBottom: 5,
-            }]}>by user 1</Title>
+            }]}>Emsi Tanger</Title>
             <Caption style={styles.caption}>@Pas</Caption>
           </View>
         </View>

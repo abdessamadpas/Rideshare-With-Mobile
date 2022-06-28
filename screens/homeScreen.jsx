@@ -1,5 +1,6 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useContext} from "react";
 import { getFirestore } from 'firebase/firestore';
+import {AuthContext} from '../navigation/AuthProvider';
 
 import {
     SafeAreaView,
@@ -12,7 +13,6 @@ import {
 } from "react-native";
 import firestore from '../firebase-config'
 
-
 import dbFirestore from '../firebase-config'
 
 import app from '../firebase-config'
@@ -24,36 +24,68 @@ import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 import {postsRef } from '../firebase-config'
  
 import {initialCurrentLocation, categoryData, carpoolingData} from '../data'
+import { logoutt } from "../constants/icons";
+
 const HomeScreen = ({ navigation }) => {
+    const {logout} = useContext(AuthContext);
 
     const [categories, setCategories] = React.useState(categoryData)
     const [selectedCategory, setSelectedCategory] = React.useState(null)
-    const [carpoolings, setCarpoolings] = React.useState(carpoolingData)
+    const [carpoolings, setCarpoolings] = React.useState([])
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
+    const [test, setTest] = React.useState([])
 
-
-    //* firestore app inisializ
-   // const toref = firebase().firestore().collection("posts")
-const test =()=>{
-    console.log('test for firestore tests ');
-    const docRef = doc(dbFirestore, "posts", "wewe");
-    const docSnap =  getDocs(docRef);
+    //* firestore app inisialize
+   // const toref = firebase().fires```````tore().collection("posts")
+// const test =()=>{
+//     console.log('test for firestore tests ');
+//     const docRef = doc(dbFirestore, "posts", "wewe");
+//     const docSnap =  getDocs(docRef);
     
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-}
+//     if (docSnap.exists()) {
+//       console.log("Document data:", docSnap.data());
+//     } else {
+//       // doc.data() will be undefined in this case
+//       console.log("No such document!");
+//     }
+// }  
 const db = getFirestore();
 
-const wewe= async ()=>{
+useEffect(() => {
+  //  console.log("wewe");
+    console.log("home screeen",carpoolings);
+    fetch()
+// console.log("effect use",carpoolings)
+//  fetch()
+//console.log("tttttttttttttttt", carpoolings);
+
+}, [])
+
+// useEffect(() => {
+//    // console.log("tttttttttdttttttt", test);
+
+// }, [carpoolings])
+
+const array = []
+const fetch= async ()=>{
     const querySnapshot = await getDocs(collection(db, "posts"));
+    //console.log("fetching test",querySnapshot) 
+    
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+
+    //  console.log(doc.id, "  aleeee  => ", doc.data());
+      
+        //  setCarpoolings(...carpoolings, doc.data() )
+       // console.log("store" , doc.data() );
+        array.push(doc.data());
+        //console.log(wewe);
+       // setTest(...wewe, wewe)
+      //  console.log("test in local",carpoolings);
     });
+   setCarpoolings(array)
+    console.log("arrayyyyyyyyy",array);
+    //console.log(test);
 }
 
  
@@ -87,11 +119,11 @@ const wewe= async ()=>{
     function onSelectCategory(category) {
         //console.log(users);
         //filter restaurant
-        let carpoolingList = carpoolingData.filter(a => a.categories.includes(category.id))
+     //   let carpoolingList = carpoolingData.filter(a => a.categories.includes(category.id))
 
-        setCarpoolings(carpoolingList)
+       // setCarpoolings(carpoolingList)
 
-        setSelectedCategory(category)
+       // setSelectedCategory(category)
     }
 
     function getCategoryNameById(id) {
@@ -145,9 +177,10 @@ const wewe= async ()=>{
                         paddingRight: SIZES.padding * 2,
                         justifyContent: 'center'
                     }}
+                    onPress={()=> logout()}
                 >
                     <Image
-                        source={icons.logout}
+                        source={icons.logoutt}
                         resizeMode="contain"
                         style={{
                             width: 30,
@@ -173,8 +206,9 @@ const wewe= async ()=>{
                         marginRight: SIZES.padding,
                         ...styles.shadow
                     }}
+                    // test function here
                     onPress={() =>{ onSelectCategory(item)
-                        test()
+                        fetch()
                     }}
                 >
                     <View
@@ -236,7 +270,7 @@ const wewe= async ()=>{
                     item,
                     currentLocation
                 })
-                wewe()
+               
             }}
             >
                 {/* Image */}
@@ -246,7 +280,7 @@ const wewe= async ()=>{
                     }}
                 >
                     <Image
-                        source={item.photos}
+                        source={{uri:item.postImg}}
                         resizeMode="cover"
                         style={{
                             width: "100%",
@@ -269,12 +303,12 @@ const wewe= async ()=>{
                             ...styles.shadow
                         }}
                     >
-                        <Text style={{ ...FONTS.h4 }}>{item.duration}</Text>
+                        <Text style={{ ...FONTS.h4 }}>{item.to}</Text>
                     </View>
                 </View>
 
                 {/* carpooling Info */}
-                <Text style={{ ...FONTS.body2 }}>{item.name}</Text>
+                <Text style={{ ...FONTS.body2 }}>{item.description}</Text>
 
                 <View
                     style={{
@@ -301,19 +335,7 @@ const wewe= async ()=>{
                             marginLeft: 10
                         }}
                     >
-                        {
-                            item.categories.map((categoryId) => {
-                                return (
-                                    <View
-                                        style={{ flexDirection: 'row' }}
-                                        key={categoryId}
-                                    >
-                                        <Text style={{ ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
-                                        <Text style={{ ...FONTS.h3, color: COLORS.darkgray }}> . </Text>
-                                    </View>
-                                )
-                            })
-                        }
+                       
 
                         {/* Price */}
                         {
@@ -358,7 +380,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop:20,
         flex: 1,
-        backgroundColor: COLORS.lightGray
+        backgroundColor: COLORS.lightGray1
     },
     shadow: {
         shadowColor: "#000",

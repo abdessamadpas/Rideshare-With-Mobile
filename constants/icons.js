@@ -10,12 +10,12 @@ const bicycle = require("../assets/images/bicycle.png");
 
 export const search = require("../assets/icons/search.png");
 export const star = require("../assets/icons/star.png");
-export const logout = require("../assets/icons/logout.png")
+export const logoutt = require("../assets/icons/logout.png")
 export const parking = require("../assets/icons/parking.png")
 export const abdou = require("../assets/icons/abdou.png")
 export const ElectricScooter = require("../assets/icons/Electric-scooter.jpg")
 export const motorcycle = require("../assets/icons/motorcycle.png")
-
+export const logo = require("../assets/images/logo.jpg")
 export default {
     back,
     car,
@@ -26,11 +26,12 @@ export default {
     master_card,
     nearby,
     star,
-    logout,
+    logoutt,
     parking,
     abdou,
     ElectricScooter,
     bicycle,
-    motorcycle
+    motorcycle,
+    logo
     
 }

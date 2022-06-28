@@ -9,9 +9,12 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from "react-native-maps-directions";
 
 import { COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY } from "../constants"
+import { carpoolingData, initialCurrentLocation } from "../data";
 const MapScreen = ({ route, navigation }) => {
 
     const mapView = React.useRef()
+
+    
 SetCarpoolingInfo
     const [carpoolingInfo, SetCarpoolingInfo] = React.useState(null)
     const [streetName, setStreetName] = React.useState("")
@@ -25,10 +28,22 @@ SetCarpoolingInfo
 
     React.useEffect(() => {
         let { carpoolingInfo, currentLocation } = route.params;
-            console.log(carpoolingInfo);
+        console.log("hello u are in map view");
+
+        console.log("current location",carpoolingData);
+
         let fromLoc = currentLocation.gps
-        let toLoc = carpoolingInfo.locationFrom
-        let street = currentLocation.streetName
+        let toLoc = carpoolingData[0].locationFrom
+        console.log("1",fromLoc);
+        console.log("2",toLoc);
+        console.log();
+        let street = initialCurrentLocation.streetName
+        console.log(street);
+
+        // const locationTo = {
+        //     latitude: 1.5347282806345879,
+        //     longitude: 110.35632207358996,
+        // }
 
         let mapRegion = {
             latitude: (fromLoc.latitude + toLoc.latitude) / 2,
@@ -254,7 +269,7 @@ SetCarpoolingInfo
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         {/* Avatar */}
                         <Image
-                            source={carpoolingInfo?.user.avatar}
+                source={carpoolingInfo?.user.avatar}
                             style={{
                                 width: 50,
                                 height: 50,
@@ -265,7 +280,7 @@ SetCarpoolingInfo
                         <View style={{ flex: 1, marginLeft: SIZES.padding }}>
                             {/* Name & Rating */}
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text style={{ ...FONTS.h4 }}>{carpoolingInfo?.user.name}</Text>
+                        <Text style={{ ...FONTS.h4 }}>{carpoolingInfo?.user.name}</Text>
                                 <View style={{ flexDirection: 'row' }}>
                                     <Image
                                         source={icons.star}

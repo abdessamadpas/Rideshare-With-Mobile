@@ -49,6 +49,8 @@ const AddPostScreen = () => {
   const [from, setFrom] = useState(null)
   const [to, setTo] = useState(null)
   const [price, setPrice] = useState(null)
+  const [ridetype, setRidetype] = useState(null)
+  const [vehicule, setVehicule] = useState(null)
 
 useEffect(() => {
   (async()=>{
@@ -97,14 +99,22 @@ useEffect(() => {
     const imageUrl = await uploadImage();
     console.log('Image Url: ', imageUrl);
     console.log('Post: ', postName);
+    console.log('from: ', from);
+    console.log('to: ', to);
+    console.log('price: ', price);
+    console.log('ridetype: ', ridetype);
+    console.log('vehicule: ', vehicule);
     console.log('user.user.providerData.uid: ', user.user.uid);
-
-
 
       addDoc(collection(dbFirestore, "posts"), {
       userId: user.user.uid,
       postName: postName,
       postImg: imageUrl,
+      from: from,
+      to:  to,
+      price: price,
+      ridetype:  ridetype,
+      vehicule:  vehicule,
       postTime: Timestamp.fromDate(new Date()),
       
     })
@@ -205,7 +215,7 @@ useEffect(() => {
         style={styles.input}
         onChangeText={(content) => setPostName(content)}
         value={postName}
-        placeholder="postName"
+        placeholder="description"
       />
         <TextInput
         style={styles.input}
@@ -225,6 +235,20 @@ useEffect(() => {
           numberOfLines={1}
           value={price}
           onChangeText={(content) => setPrice(content)}
+        />
+        <TextInput
+          placeholder="ride type"
+          multiline
+          numberOfLines={1}
+          value={ridetype}
+          onChangeText={(content) => setRidetype(content)}
+        />
+        <TextInput
+          placeholder="type of vehicule"
+          multiline
+          numberOfLines={1}
+          value={vehicule}
+          onChangeText={(content) => setVehicule(content)}
         />
 
         {uploading ? (

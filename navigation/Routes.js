@@ -31,8 +31,8 @@ const Routes = () => {
 
   // if (initializing) return null;
   useEffect(() => {
-   // console.log(user);
-  //  console.log(auth);
+  //console.log(user);
+   console.log(auth);
   }, [user])
 
   return (

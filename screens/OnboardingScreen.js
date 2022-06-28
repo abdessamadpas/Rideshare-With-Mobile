@@ -58,22 +58,22 @@ const OnboardingScreen = ({navigation}) => {
         onDone={() => navigation.navigate("Login")}
         pages={[
           {
-            backgroundColor: '#a6e4d0',
-            image: <Image source={require('../assets/onboarding-img1.png')} />,
-            title: 'Connect to the World',
-            subtitle: 'A New Way To Connect With The World',
+            backgroundColor: '#fdeb93',
+            image: <Image source={require('../assets/images/11.png')} />,
+            title: 'A New Way To take  your ride',
+            subtitle: ' your ride is here',
           },
           {
-            backgroundColor: '#fdeb93',
-            image: <Image source={require('../assets/onboarding-img2.png')} />,
-            title: 'Share Your Favorites',
+            backgroundColor: '#a6e4d0',
+            image: <Image source={require('../assets/images/22.png')} />,
+            title: 'have fun with new friends',
             subtitle: 'Share Your Thoughts With Similar Kind of People',
           },
           {
-            backgroundColor: '#e9bcbe',
-            image: <Image source={require('../assets/onboarding-img3.png')} />,
-            title: 'Become The Star',
-            subtitle: "Let The Spot Light Capture You",
+            backgroundColor: '#a6b0bf',
+            image: <Image source={require('../assets/images/33.png')} />,
+            title: 'Add offer',
+            subtitle: "share ride with your community",
           },
         ]}
       />
